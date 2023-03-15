@@ -1,0 +1,16 @@
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model city {
+  id             String @id @default(uuid())
+  postalCode     String
+  cityCode       String
+  cityName       String
+  routingWording String
+}
