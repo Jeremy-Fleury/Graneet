@@ -6,7 +6,9 @@ git clone git@github.com:Jeremy-Fleury/graneet.git
 
 cd graneet
 
-npm install
+npm i
+
+npm run prisma:generate
 
 npm run start
 ```
@@ -17,7 +19,6 @@ npm run start
 
 ## Test
 ```console
-npm run test:front
 npm run test:api
 ```
 

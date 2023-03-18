@@ -10,7 +10,8 @@
     "seed": "lerna exec --scope=@graneet/api -- npm run seed",
     "lint": "eslint \"packages/**/*.ts*\" --fix",
     "lint:check": "eslint \"packages/**/*.ts*\"",
-    "test:api": "lerna exec --scope=@graneet/api -- npm run test"
+    "test:api": "lerna exec --scope=@graneet/api -- npm run test",
+    "prisma:generate": "lerna exec --scope=@graneet/api -- npm run prisma:generate"
   },
   "keywords": [],
   "author": "",
