@@ -7,10 +7,36 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model city {
-  id             String @id @default(uuid())
-  postalCode     String
-  cityCode       String
-  cityName       String
-  routingWording String
+model quote {
+  id        String    @id @default(uuid())
+  createdAt DateTime
+  updatedAt DateTime
+  amount    Int
+  rootLot   quoteLot?
+}
+
+model quoteLot {
+  id        String   @id @default(uuid())
+  createdAt DateTime
+  updatedAt DateTime
+  amount    Int
+
+  quote   quote?  @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+  quoteId String? @unique
+
+  parentQuoteLot   quoteLot? @relation("ParentQuoteLot", fields: [parentQuoteLotId], references: [id], onDelete: Cascade)
+  parentQuoteLotId String?
+
+  subQuoteLots quoteLot[]  @relation("ParentQuoteLot")
+  quoteItems   quoteItem[]
+}
+
+model quoteItem {
+  id        String   @id @default(uuid())
+  createdAt DateTime
+  updatedAt DateTime
+  amount    Int
+
+  quoteLot   quoteLot? @relation(fields: [quoteLotId], references: [id], onDelete: Cascade)
+  quoteLotId String?
 }
